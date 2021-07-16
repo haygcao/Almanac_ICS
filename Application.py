@@ -9,17 +9,17 @@ import config
 import methods
 
 with open(file="黄历.ics", encoding="utf8", mode="w") as file_object:
-    start_string = "BEGIN:VCALENDAR\n" + "VERSION:2.0\n" + "X-WR-CALNAME:" + config.Default.name + "\n" + \
-                   "X-APPLE-CALENDAR-COLOR:" + config.Default.color + "\n" + "X-WR-TIMEZONE:" + config.Default.zone + \
-                   "\n"
+    start_string = "BEGIN:VCALENDAR\nVERSION:2.0\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nX-WR-CALNAME:" \
+                   + config.Default.name + "\nX-WR-TIMEZONE:Asia/Shanghai\n" \
+                   + "X-WR-CALDESC:黄历\n"
     file_object.write(start_string)
     body = methods.get_details()
-    body_string = ("BEGIN:VEVENT\nUID:",
-                   "SEQUENCE:0\nBEGIN:VALARM\nTRIGGER;VALUE=DATE-TIME:19760401T005545Z\nACTION:NONE\nEND:VALARM\n")
+    body_string = ("BEGIN:VEVENT\nDTSTAMP:20190912T184136Z\nUID:",
+                   "END:VEVENT\n")
     for item in body:
         body0 = body_string[0]
         body1 = "UID:" + item[0] + 'almanac_in_' + config.Default.year + "\n"
-        body2 = "DTSTART;VALUE=DATE:" + item[0] + "\n" + "DTEND;VALUE=DATE:" + item[0] + "\n"
+        body2 = "DTSTART;VALUE=DATE:" + item[0] + "\nDTEND;VALUE=DATE:" + item[0] + "\n"
         body3 = "SUMMARY:" + item[1] + "\n"
         body4 = body_string[1]
         full_body = body0 + body1 + body2 + body3 + body4

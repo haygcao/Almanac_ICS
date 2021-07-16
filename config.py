@@ -7,8 +7,6 @@ class Default:
     other = "other2021.json"
     yj = "yj2021.json"
     name = "黄历"
-    color = "#FFA60F"
-    zone = "Asia/Shanghai"
 
 class MonthDate:
     # pool of month and date
