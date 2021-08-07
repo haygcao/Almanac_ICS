@@ -6,9 +6,10 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Upload Python Package
+name: 日历
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
